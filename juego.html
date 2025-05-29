@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego - Modo Supervivencia</title>
+    <link rel="stylesheet" href="./css/juego.css">
+</head>
+<body>
+    <div class="hud" id="hud"></div>
+    <canvas id="juegoCanvas"></canvas>
+
+    <!-- Controles táctiles: ocultos por defecto -->
+    <div id="touch-controls" class="hidden">
+      <button id="btn-left"  class="touch-btn">◀</button>
+      <button id="btn-right" class="touch-btn">▶</button>
+       <button id="btn-up"    class="touch-btn">▲</button>
+      <button id="btn-down"  class="touch-btn">▼</button>
+      <button id="btn-fire"  class="touch-btn">🔥</button>
+    </div>
+
+    <div id="gameOverScreen" style="display: none;">
+        <h1 id="gameOverText">¡Juego Terminado!</h1>
+        <p id="vidasPerdidasText"></p>
+        <p id="tiempoRestanteText"></p>
+        <button onclick="reiniciarJuego()">Reiniciar</button>
+        <button onclick="volverAlMenu()">Menú Principal</button>
+    </div>
+
+
+    
+    <script src="js/game.js"></script>
+</body>
+</html>

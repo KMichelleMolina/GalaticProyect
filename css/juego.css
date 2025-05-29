@@ -1,0 +1,124 @@
+/* ===== Reset & Box sizing ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ===== Body & Canvas ===== */
+body {
+  font-family: 'Press Start 2P', cursive;
+  background: black;
+  color: white;
+  overflow: hidden;
+  position: relative;
+  height: 100vh;
+}
+
+canvas {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: block;
+  background: rgba(0, 0, 0, 0.9);
+  border: none;
+  z-index: 1;
+}
+
+/* ===== HUD & Game Over ===== */
+.hud {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  z-index: 10;
+  font-size: clamp(0.75rem, 2vw, 1rem);
+}
+
+#gameOverScreen {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0,0,0,0.85);
+  padding: 2rem;
+  border-radius: 1rem;
+  text-align: center;
+  color: white;
+  z-index: 1000;
+  display: none; /* lo controlas desde JS */
+  flex-direction: column;
+}
+
+#gameOverScreen h1 {
+  font-size: clamp(1.5rem, 5vw, 3rem);
+  color: red;
+  text-shadow: 2px 2px black;
+  margin-bottom: 1rem;
+}
+#gameOverScreen p {
+  font-size: clamp(0.75rem, 2.5vw, 1.25rem);
+  margin-bottom: 0.75rem;
+}
+#gameOverScreen button {
+  padding: 0.75rem 1.5rem;
+  margin: 0.5rem;
+  font-size: clamp(0.75rem, 2vw, 1rem);
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  background: #333;
+  color: #fff;
+  transition: background 0.3s;
+}
+#gameOverScreen button:hover {
+  background: #555;
+}
+
+/* ===== Controles táctiles ===== */
+#touch-controls {
+  position: fixed;
+  bottom: calc(env(safe-area-inset-bottom, 0px) + 16px);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-wrap: wrap;            /* permite varias filas si faltan espacio */
+  justify-content: center;
+  gap: 1rem;
+  z-index: 1000;
+  pointer-events: none;
+}
+
+.touch-btn {
+  pointer-events: auto;
+  /* ajusta estos valores para agrandarlos o reducirlos */
+  width: clamp(3rem, 15vw, 6rem);
+  height: clamp(3rem, 15vw, 6rem);
+  font-size: clamp(1.5rem, 6vw, 3rem);
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  touch-action: none;
+  opacity: 0.6;
+  transition: opacity 0.1s;
+}
+.touch-btn:active {
+  opacity: 1;
+}
+
+/* .hidden controla visibilidad */
+.hidden {
+  visibility: hidden;
+}
+
+/* ===== Forzar controles en pantallas pequeñas ===== */
+@media (max-width: 768px), (pointer: coarse) {
+  #touch-controls {
+
+    display: flex;
+    visibility: visible !important;
+  }
+}

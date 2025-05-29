@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nombre del jugador</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./css/nombre.css">
+</head>
+<body>
+    <div class="container">
+        <h1 id="modoTexto" >¡Modo!</h1>
+        <p class="instructions">
+            Escribe tu nombre para comenzar el juego. <br />
+            - Mueve tu nave para evitar meteoritos y eliminar enemigos.<br />
+            - Gana puntos al destruirlos. <br />
+            - ¡Cuida tus vidas y supera tu récord!
+        </p>
+        <input type="text" id="nombre" placeholder="Nombre del jugador" maxlength="15">
+        <button id="start-game-btn" onclick="continuar()">Continuar</button>
+    </div>
+
+    <script src="js/nombre.js"></script>
+
+</body>
+</html>
