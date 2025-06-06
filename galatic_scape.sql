@@ -22,38 +22,25 @@ SET time_zone = "+00:00";
 --
 
 -- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `jugadores`
---
-
 CREATE TABLE `jugadores` (
   `idJugadores` int(11) NOT NULL,
-  `nombre` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `resultados`
---
-
+  `nombre` varchar(50) NOT NULL,
+  `puntaje` int(11) NOT NULL,
+  `vidas` int(11) NOT NULL,
+  `nivel` int(11) NOT NULL,
+  `modo` varchar(20) NOT NULL,
+  `monedas` int(11) NOT NULL
+)
 CREATE TABLE `resultados` (
   `idResultados` int(11) NOT NULL,
-  `idJugador` int(11) NOT NULL,
+  `idJugadores` int(11) NOT NULL,
+  `nombre` varchar(50) NOT NULL,
   `puntaje` int(11) NOT NULL,
   `vidas` int(3) NOT NULL,
-  `modo` varchar(20) DEFAULT NULL,
-  `fecha` datetime NOT NULL DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Índices para tablas volcadas
---
-
---
--- Indices de la tabla `jugadores`
---
+  `nivel` int(11) NOT NULL,
+  `modo` varchar(20) NOT NULL,
+  `monedas` int(11) NOT NULL
+)
 ALTER TABLE `jugadores`
   ADD PRIMARY KEY (`idJugadores`),
   ADD UNIQUE KEY `nombre` (`nombre`);
@@ -63,7 +50,7 @@ ALTER TABLE `jugadores`
 --
 ALTER TABLE `resultados`
   ADD PRIMARY KEY (`idResultados`),
-  ADD KEY `idJugador` (`idJugador`);
+  ADD KEY `idJugadores` (`idJugadores`);
 
 --
 -- AUTO_INCREMENT de las tablas volcadas
@@ -73,13 +60,13 @@ ALTER TABLE `resultados`
 -- AUTO_INCREMENT de la tabla `jugadores`
 --
 ALTER TABLE `jugadores`
-  MODIFY `idJugadores` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idJugadores` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT de la tabla `resultados`
 --
 ALTER TABLE `resultados`
-  MODIFY `idResultados` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idResultados` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 
 --
 -- Restricciones para tablas volcadas
@@ -89,7 +76,7 @@ ALTER TABLE `resultados`
 -- Filtros para la tabla `resultados`
 --
 ALTER TABLE `resultados`
-  ADD CONSTRAINT `resultados_ibfk_1` FOREIGN KEY (`idJugador`) REFERENCES `jugadores` (`idJugadores`);
+  ADD CONSTRAINT `resultados_ibfk_1` FOREIGN KEY (`idJugadores`) REFERENCES `jugadores` (`idJugadores`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
